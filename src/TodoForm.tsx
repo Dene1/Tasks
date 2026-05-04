@@ -1,34 +1,43 @@
-import {useRef, useEffect} from 'react'
+import {useRef, useEffect, useState} from 'react'
+import type {Action} from './reducer.ts'
 
 interface TodoFormProps {
-  text: string;
-  setText: (text: string) => void;
-  onAdd: () => void;
+	dispatch: React.Dispatch<Action>
 }
 
-export const TodoForm = ({text, setText, onAdd}: TodoFormProps) => {
-  const inputRef = useRef<HTMLInputElement>(null)
+export const TodoForm = ({dispatch}: TodoFormProps) => {
+	const [text, setText] = useState<string>('')
+	const inputRef = useRef<HTMLInputElement>(null)
 
-  useEffect(() => {
-    inputRef.current?.focus()
-  }, [])
+	const addTodo = () => {
+		if (text.trim()) {
+			dispatch({type: 'ADD_TODO', payload: text})
+			setText('')
+		}
+	}
 
-  return (
-    <form className='form'
-          onSubmit={e => e.preventDefault()}>
-      <input
-        type='text'
-        className='input'
-        value={text}
-        ref={inputRef}
-        onChange={(e) => setText(e.target.value)}
-        placeholder="Введи название"
-      />
-      <button type="button"
-              className="counter"
-              onClick={onAdd}>
-        Добавить
-      </button>
-    </form>
-  )
+	useEffect(() => {
+		inputRef.current?.focus()
+	}, [])
+
+	return (
+		<form className="form"
+		      onSubmit={e => e.preventDefault()}>
+			<input
+				type="text"
+				className="input"
+				value={text}
+				ref={inputRef}
+				minLength={3}
+				maxLength={100}
+				onChange={(e) => setText(e.target.value)}
+				placeholder="Введи название"
+			/>
+			<button type="button"
+			        className="counter"
+			        onClick={addTodo}>
+				Добавить
+			</button>
+		</form>
+	)
 }

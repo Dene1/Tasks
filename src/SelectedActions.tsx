@@ -1,24 +1,30 @@
+import type {Action} from './reducer.ts'
+
 interface SelectedActionsProps {
-  hasSelectedTodos: boolean;
-  onMarkAsDone: () => void;
-  onDeleteSelected: () => void;
+	dispatch: React.Dispatch<Action>;
 }
 
-export const SelectedActions = ({
-                                  hasSelectedTodos,
-                                  onMarkAsDone,
-                                  onDeleteSelected
-                                }: SelectedActionsProps) => {
-  if (!hasSelectedTodos) return null
+export const SelectedActions = ({dispatch}: SelectedActionsProps) => {
+	const markSelectedAsDone = () => dispatch({type: 'MARK_SELECTED_AS_DONE'})
 
-  return (
-    <div className="functions">
-      <button type="button" className='zel' onClick={onMarkAsDone}>
-        Сделать выполненными
-      </button>
-      <button type="button" className='deleteButton' onClick={onDeleteSelected}>
-        Удалить выбранные
-      </button>
-    </div>
-  )
+	const deleteAllSelectedTodos = () => {
+		if (confirm('Are you sure you want to delete all selected todos?')) {
+			dispatch({type: 'DELETE_SELECTED_TODOS'})
+		}
+	}
+
+	return (
+		<div className="functions">
+			<button type="button"
+			        className="zel"
+			        onClick={markSelectedAsDone}>
+				Сделать выполненными
+			</button>
+			<button type="button"
+			        className="deleteButton"
+			        onClick={deleteAllSelectedTodos}>
+				Удалить выбранные
+			</button>
+		</div>
+	)
 }

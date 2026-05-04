@@ -1,17 +1,25 @@
+import type {Action} from './reducer.ts'
+
 interface TodoControlsProps {
-  onSelectAll: () => void;
-  onDeselectAll: () => void;
+	dispatch: React.Dispatch<Action>
 }
 
-export const TodoControls = ({ onSelectAll, onDeselectAll }: TodoControlsProps) => {
-  return (
-    <div className="functions">
-      <button type="button" className="counter" onClick={onSelectAll}>
-        Выбрать все
-      </button>
-      <button type="button" className="counter" onClick={onDeselectAll}>
-        Снять выделение
-      </button>
-    </div>
-  )
+export const TodoControls = ({dispatch}: TodoControlsProps) => {
+	const selectAllTodos = () => dispatch({type: 'SELECT_ALL_TODOS'})
+	const deselectAllTodos = () => dispatch({type: 'DESELECT_ALL_TODOS'})
+
+	return (
+		<div className="functions">
+			<button type="button"
+			        className="counter"
+			        onClick={selectAllTodos}>
+				Выбрать все
+			</button>
+			<button type="button"
+			        className="counter"
+			        onClick={deselectAllTodos}>
+				Снять выделение
+			</button>
+		</div>
+	)
 }
