@@ -16,7 +16,7 @@ export const SelectedActions = ({dispatch}: SelectedActionsProps) => {
 	return (
 		<div className="functions">
 			<button type="button"
-			        className="zel"
+			        className="green"
 			        onClick={markSelectedAsDone}>
 				Сделать выполненными
 			</button>

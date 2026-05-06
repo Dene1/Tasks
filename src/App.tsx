@@ -1,41 +1,20 @@
-import {useReducer, useState} from 'react'
+import {useReducer} from 'react'
 import {initialState, reducer} from './reducer.ts'
 import {TodoForm} from './TodoForm.tsx'
 import {TodoControls} from './TodoControls.tsx'
 import {SelectedActions} from './SelectedActions.tsx'
+import {useDragAndDrop, useTodoActions} from './hooks'
 
 function App() {
 	const [state, dispatch] = useReducer(reducer, initialState)
-	const [draggedItem, setDraggedItem] = useState<number | null>(null)
-
-	const handleDragStart = (index: number) => setDraggedItem(index)
-	const handleDragOver = (e: React.DragEvent) => e.preventDefault()
-
-	const handleDrop = (toIndex: number) => {
-		if (draggedItem === null) return
-		dispatch({type: 'REORDER_TODOS', payload: {fromIndex: draggedItem, toIndex}})
-		setDraggedItem(null)
-	}
-
-	const toggleTodoSelection = (id: string) => dispatch({
-		type: 'TOGGLE_SELECT_TODO',
-		payload: id
-	})
-
-	const toggleTodoCompletion = (id: string) => dispatch({
-		type: 'TOGGLE_COMPLETE_TODO',
-		payload: id
-	})
-
-	const deleteTodo = (id: string, title: string) => {
-		if (confirm(`Are you sure you want to delete "${title}"?`)) {
-			dispatch({type: 'DELETE_TODO', payload: id})
-		}
-	}
-
-	const moveUp = (index: number) => dispatch({type: 'MOVE_UP', payload: index})
-	const moveDown = (index: number) => dispatch({type: 'MOVE_DOWN', payload: index})
-
+	const {handleDragStart, handleDragOver, handleDrop} = useDragAndDrop(dispatch)
+	const {
+		toggleTodoSelection,
+		toggleTodoCompletion,
+		deleteTodo,
+		moveUp,
+		moveDown
+	} = useTodoActions(dispatch)
 
 	const hasSelectedTodos = state.todos.some(todo => todo.isSelected)
 
@@ -70,7 +49,7 @@ function App() {
 
 						<button
 							type="button"
-							className={item.isCompleted ? 'zel' : 'kra'}
+							className={item.isCompleted ? 'green' : 'red'}
 							onClick={() => toggleTodoCompletion(item.id)}
 						>
 							{item.isCompleted ? 'Выполнено' : 'Не выполнено'}

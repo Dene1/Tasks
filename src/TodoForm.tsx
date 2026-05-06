@@ -29,7 +29,7 @@ export const TodoForm = ({dispatch}: TodoFormProps) => {
 				value={text}
 				ref={inputRef}
 				minLength={3}
-				maxLength={100}
+				maxLength={70}
 				onChange={(e) => setText(e.target.value)}
 				placeholder="Введи название"
 			/>

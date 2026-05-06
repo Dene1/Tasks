@@ -325,7 +325,7 @@ code {
   text-decoration: line-through;
 }
 
-.zel {
+.green {
   padding: 3px 10px;
   border-radius: 5px;
   color: white;
@@ -341,7 +341,7 @@ code {
   }
 }
 
-.kra {
+.red {
   padding: 3px 10px;
   border-radius: 5px;
   color: white;
