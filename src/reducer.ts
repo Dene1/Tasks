@@ -4,22 +4,19 @@ export const initialState = {
 			id: crypto.randomUUID(),
 			title: 'Привет',
 			isSelected: false,
-			isCompleted: false,
-			priority: 1
+			isCompleted: false
 		},
 		{
 			id: crypto.randomUUID(),
 			title: 'Тестовые',
 			isSelected: false,
-			isCompleted: false,
-			priority: 2
+			isCompleted: false
 		},
 		{
 			id: crypto.randomUUID(),
 			title: 'Задача 1',
 			isSelected: false,
-			isCompleted: false,
-			priority: 3
+			isCompleted: false
 		}
 	]
 }
@@ -42,13 +39,15 @@ export const reducer = (state = initialState, action: Action) => {
 		case 'ADD_TODO': {
 			return {
 				...state,
-				todos: [...state.todos, {
-					id: crypto.randomUUID(),
-					title: action.payload,
-					isCompleted: false,
-					isSelected: false,
-					priority: state.todos.length + 1
-				}]
+				todos: [
+					{
+						id: crypto.randomUUID(),
+						title: action.payload,
+						isCompleted: false,
+						isSelected: false
+					},
+					...state.todos
+				]
 			}
 		}
 
@@ -121,14 +120,9 @@ export const reducer = (state = initialState, action: Action) => {
 			const [removed] = newTodos.splice(fromIndex, 1)
 			newTodos.splice(toIndex, 0, removed)
 
-			const updatedTodos = newTodos.map((todo, idx) => ({
-				...todo,
-				priority: idx + 1
-			}))
-
 			return {
 				...state,
-				todos: updatedTodos
+				todos: newTodos
 			}
 		}
 
@@ -139,14 +133,9 @@ export const reducer = (state = initialState, action: Action) => {
 			const newTodos = [...state.todos];
 			[newTodos[index - 1], newTodos[index]] = [newTodos[index], newTodos[index - 1]]
 
-			const updatedTodos = newTodos.map((todo, idx) => ({
-				...todo,
-				priority: idx + 1
-			}))
-
 			return {
 				...state,
-				todos: updatedTodos
+				todos: newTodos
 			}
 		}
 
@@ -157,18 +146,11 @@ export const reducer = (state = initialState, action: Action) => {
 			const newTodos = [...state.todos];
 			[newTodos[index], newTodos[index + 1]] = [newTodos[index + 1], newTodos[index]]
 
-			const updatedTodos = newTodos.map((todo, idx) => ({
-				...todo,
-				priority: idx + 1
-			}))
 
 			return {
 				...state,
-				todos: updatedTodos
+				todos: newTodos
 			}
 		}
-
-		default:
-			return state
 	}
 }
