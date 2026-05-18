@@ -1,0 +1,132 @@
+.button--green {
+  padding: 3px 10px;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  background: green;
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+  width: 140px;
+
+  &:hover {
+    border-color: white;
+    cursor: pointer;
+  }
+}
+
+.button--red {
+  padding: 3px 10px;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  background: red;
+  width: 140px;
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+
+  &:hover {
+    border-color: white;
+    cursor: pointer;
+  }
+}
+
+.button--default {
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #c084fc;
+  background: rgba(192, 132, 252, 0.15);
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+  margin-bottom: 24px;
+
+  &:hover {
+    border-color: rgba(192, 132, 252, 0.5);
+    cursor: pointer;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #c084fc;
+    outline-offset: 2px;
+  }
+}
+
+.button--select {
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
+  background: cornflowerblue;
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+  margin-bottom: 24px;
+
+  &:hover {
+    border-color: blue;
+    color: #d0d0d0;
+    cursor: pointer;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #c084fc;
+    outline-offset: 2px;
+  }
+}
+
+.button--move {
+  padding: 3px 10px;
+  border-radius: 5px;
+  color: #c084fc;
+  font-size: 16px;
+  background: transparent;
+  border: 2px solid gray;
+  transition: border-color 0.3s;
+
+  &:hover {
+    border-color: white;
+    color: #c084fc;
+    cursor: pointer;
+  }
+
+  &:disabled {
+    color: gray;
+    border-color: gray;
+    cursor: not-allowed;
+  }
+}
+
+.button--add {
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #c084fc;
+  background: rgba(192, 132, 252, 0.15);
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+  margin-bottom: 24px;
+
+  &:hover {
+    border-color: rgba(192, 132, 252, 0.5);
+    cursor: pointer;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #c084fc;
+    outline-offset: 2px;
+  }
+}
+
+.button--delete {
+  padding: 3px 10px;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  background: red;
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+
+  &:hover {
+    border-color: white;
+    cursor: pointer;
+  }
+}

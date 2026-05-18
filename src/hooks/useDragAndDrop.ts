@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import type {Action} from '../reducer.ts'
+import type {Action} from '../reducers/reducer.ts'
 
 export const useDragAndDrop = (dispatch: React.Dispatch<Action>) => {
 	const [draggedItem, setDraggedItem] = useState<number | null>(null)

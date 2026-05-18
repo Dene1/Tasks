@@ -111,46 +111,11 @@ code {
   background: var(--code-bg);
 }
 
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
-
-  &:hover {
-    border-color: var(--accent-border);
-    cursor: pointer;
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
-}
 
 .form {
   display: flex;
   flex-direction: row;
   gap: 20px;
-}
-
-.input {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
-}
-
-.input:active {
-  border-color: white;
 }
 
 .functions {
@@ -325,37 +290,6 @@ code {
   text-decoration: line-through;
 }
 
-.green {
-  padding: 3px 10px;
-  border-radius: 5px;
-  color: white;
-  font-size: 16px;
-  background: green;
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  width: 140px;
-
-  &:hover {
-    border-color: white;
-    cursor: pointer;
-  }
-}
-
-.red {
-  padding: 3px 10px;
-  border-radius: 5px;
-  color: white;
-  font-size: 16px;
-  background: red;
-  width: 140px;
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-
-  &:hover {
-    border-color: white;
-    cursor: pointer;
-  }
-}
 
 .todo {
   display: flex;
@@ -364,35 +298,6 @@ code {
   gap: 16px;
 }
 
-.todosButton {
-  padding: 3px 10px;
-  border-radius: 5px;
-  font-size: 16px;
-  color: black;
-  background: white;
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-
-  &:hover {
-    cursor: pointer;
-    border-color: var(--accent-border);
-  }
-}
-
-.deleteButton {
-  padding: 3px 10px;
-  border-radius: 5px;
-  color: white;
-  font-size: 16px;
-  background: red;
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-
-  &:hover {
-    border-color: white;
-    cursor: pointer;
-  }
-}
 
 .ticks {
   position: relative;

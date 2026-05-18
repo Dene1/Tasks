@@ -1,13 +1,12 @@
 import {useRef, useEffect, useState} from 'react'
-import type {Action} from './reducer.ts'
+import {Input, Button} from './ui'
+import {useItemsContext} from '../context/ItemsContext.tsx'
 
-interface TodoFormProps {
-	dispatch: React.Dispatch<Action>
-}
 
-export const TodoForm = ({dispatch}: TodoFormProps) => {
+export const TodoForm = () => {
 	const [text, setText] = useState<string>('')
 	const inputRef = useRef<HTMLInputElement>(null)
+	const {dispatch} = useItemsContext()
 
 	const addTodo = () => {
 		if (text.trim()) {
@@ -23,21 +22,16 @@ export const TodoForm = ({dispatch}: TodoFormProps) => {
 	return (
 		<form className="form"
 		      onSubmit={e => e.preventDefault()}>
-			<input
-				type="text"
-				className="input"
-				value={text}
+			<Input
+				text={text}
 				ref={inputRef}
 				minLength={3}
 				maxLength={70}
-				onChange={(e) => setText(e.target.value)}
+				changeText={(e) => setText(e.target.value)}
 				placeholder="Введи название"
 			/>
-			<button type="button"
-			        className="counter"
-			        onClick={addTodo}>
-				Добавить
-			</button>
+			<Button label="Добавить"
+			        onClick={addTodo} />
 		</form>
 	)
 }
