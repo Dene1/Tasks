@@ -1,5 +1,6 @@
-import {Button, Checkbox} from './ui'
+import {Button} from './ui'
 import {useItemsContext} from '../context/ItemsContext.tsx'
+import {Label} from './ui/label/Label.tsx'
 
 export const TodoItems = () => {
 	const {
@@ -26,14 +27,9 @@ export const TodoItems = () => {
 					onDrop={() => handleDrop(index)}
 				>
 					<span className="grab">⋮⋮</span>
-					<label>
-						<Checkbox selected={item.isSelected}
-						          onChange={() => toggleTodoSelection(item.id)}
-						/>
-						{item.isCompleted ?
-							<span className="crossed">{item.title}</span> :
-							<span>{item.title}</span>}
-					</label>
+
+					<Label item={item}
+					       toggleTodoSelection={toggleTodoSelection} />
 
 					<Button
 						label={item.isCompleted ? 'Выполнено' : 'Не выполнено'}

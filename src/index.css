@@ -286,11 +286,6 @@ code {
   }
 }
 
-.crossed {
-  text-decoration: line-through;
-}
-
-
 .todo {
   display: flex;
   flex-direction: row;
